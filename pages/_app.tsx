@@ -10,14 +10,15 @@ const App = ({
   Component,
   pageProps,
 }: AppProps<{ session?: Session | null }>) => {
-  const [queryClient] = useState(() => new QueryClient(config))
+  const [queryClient] = useState(() => new QueryClient(config));
 
   return (
     <SessionProvider session={pageProps.session}>
       <QueryClientProvider client={queryClient}>
-      <div className="container mx-auto">
-        <Component {...pageProps} />
-      </div></QueryClientProvider>
+        <div className="container mx-auto">
+          <Component {...pageProps} />
+        </div>
+      </QueryClientProvider>
     </SessionProvider>
   );
 };
