@@ -11,4 +11,4 @@ export default withAuth({
   },
 });
 
-export const config = { matcher: ["/reports/:path*"] };
+// export const config = { matcher: ["/reports/:path*"] };
