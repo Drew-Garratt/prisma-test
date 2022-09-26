@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useContext } from "react";
+import { ReportCard } from "./ReportCard";
 import { ReportsContext } from "./ReportsProvider";
 
 export const ListReports = () => {
@@ -19,41 +20,7 @@ export const ListReports = () => {
           {reports &&
             reports.map((report) => {
               return (
-                <li key={report.id} className={"shadow-md border rounded-md p-4"}>
-                  <ul>
-                    <li>Id: {report.id}</li>
-
-                    <li>Status: {report.state}</li>
-
-                    <li>Type: {report.payload.reportType}</li>
-
-                    <li>Message: {report.payload.message}</li>
-
-                    <li>
-                      <Link href={`/reports/${report.id}`}>Details</Link>
-                    </li>
-                  </ul>
-                  <div className="flex space-x-2">
-                    <button
-                      type="button"
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      onClick={() => {
-                        blockReport(report.id);
-                      }}
-                    >
-                      Block
-                    </button>
-                    <button
-                      type="button"
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      onClick={() => {
-                        closeReport(report.id);
-                      }}
-                    >
-                      Resolve
-                    </button>
-                  </div>
-                </li>
+                <ReportCard key={report.id} report={report}/>
               );
             })}
         </ul>
